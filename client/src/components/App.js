@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Route, Switch } from 'react-router';
+import Vote from './Vote';
 
-const Vote = () => <div>Vote</div>;
 const Dashboard = () => <div>Dashboard</div>;
 
 class App extends Component {

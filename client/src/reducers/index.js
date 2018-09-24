@@ -1,7 +1,15 @@
-export const initialState = {};
+import { combineReducers } from 'redux';
+import { drizzleReducers } from 'drizzle';
 
-const reduce = (state = initialState, action) => {
+export const initialState = { valor: 1000 };
+
+const app = (state = initialState, action) => {
   return state;
 };
 
-export default reduce;
+const reducer = combineReducers({
+  app,
+  ...drizzleReducers
+});
+
+export default reducer;
