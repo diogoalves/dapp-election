@@ -8,10 +8,11 @@ class App extends Component {
   render() {
     return (
       <div>
-        <Switch>
+        {/* <Switch>
           <Route exact path="/" component={Vote} />
           <Route exact path="/dashboard" component={Dashboard} />
-        </Switch>
+        </Switch> */}
+        <Vote />
       </div>
     );
   }
