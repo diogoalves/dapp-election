@@ -13,11 +13,13 @@ import createSagaMiddleware from 'redux-saga';
 import App from './components/App';
 import reducer from './reducers';
 import sagas from './sagas';
-import { generateContractsInitialState } from 'drizzle';
+import { Drizzle, generateStore, generateContractsInitialState } from 'drizzle';
+
 import { DrizzleProvider } from 'drizzle-react';
 import Election from './contracts/Election.json';
-import { LoadingContainer } from 'drizzle-react-components';
+import LoadingContainer from './components/LoadingContainer';
 import registerServiceWorker from './registerServiceWorker';
+import { DrizzleContext } from 'drizzle-react';
 
 const options = { contracts: [Election] };
 
@@ -39,22 +41,21 @@ const store = createStore(
   composeEnhancers(applyMiddleware(...middleware))
 );
 
+const drizzleStore = generateStore(options);
+const drizzle = new Drizzle(options, store);
+
 sagaMiddleware.run(sagas);
 
+// <DrizzleProvider options={options} store={store}>
+// </DrizzleProvider>
 ReactDOM.render(
-  <DrizzleProvider options={options} store={store}>
-    {/* <ConnectedRouter history={history}> */}
-    <LoadingContainer
-      loadingComp={() => <h1>loading</h1>}
-      errorComp={() => <h1>error</h1>}
-    >
+  <DrizzleContext.Provider drizzle={drizzle}>
+    <LoadingContainer>
       <Provider store={store}>
         <App />
       </Provider>
     </LoadingContainer>
-
-    {/* </ConnectedRouter> */}
-  </DrizzleProvider>,
+  </DrizzleContext.Provider>,
   document.getElementById('root')
 );
 
