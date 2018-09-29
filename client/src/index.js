@@ -46,8 +46,6 @@ const drizzle = new Drizzle(options, store);
 
 sagaMiddleware.run(sagas);
 
-// <DrizzleProvider options={options} store={store}>
-// </DrizzleProvider>
 ReactDOM.render(
   <DrizzleContext.Provider drizzle={drizzle}>
     <LoadingContainer>
