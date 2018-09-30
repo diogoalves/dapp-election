@@ -5,7 +5,7 @@ import { Provider } from 'react-redux';
 
 import { createBrowserHistory } from 'history';
 import {
-  //ConnectedRouter,
+  ConnectedRouter,
   connectRouter,
   routerMiddleware
 } from 'connected-react-router';
@@ -50,7 +50,9 @@ ReactDOM.render(
   <DrizzleContext.Provider drizzle={drizzle}>
     <LoadingContainer>
       <Provider store={store}>
-        <App />
+        <ConnectedRouter history={history}>
+          <App />
+        </ConnectedRouter>
       </Provider>
     </LoadingContainer>
   </DrizzleContext.Provider>,
