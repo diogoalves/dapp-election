@@ -4,10 +4,10 @@ import { DrizzleContext } from 'drizzle-react';
 export default ({ children }) => (
   <DrizzleContext.Consumer>
     {drizzleContext => {
-      const { drizzle, drizzleState, initialized } = drizzleContext;
+      const { initialized } = drizzleContext;
 
       if (!initialized) {
-        return 'Loading...';
+        return <div>Loading...</div>;
       }
 
       return children;
