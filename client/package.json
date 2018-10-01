@@ -8,18 +8,12 @@
     "connected-react-router": "^4.4.1",
     "drizzle": "^1.2.3",
     "drizzle-react": "^1.2.0",
-    "drizzle-react-components": "^1.2.0",
     "husky": "^1.0.0-rc.15",
     "lint-staged": "^7.3.0",
     "prettier": "^1.14.3",
     "react": "^16.5.2",
     "react-dom": "^16.5.2",
-    "react-redux": "^5.0.7",
-    "react-router": "^4.3.1",
-    "react-router-dom": "^4.3.1",
     "react-scripts": "1.1.5",
-    "redux": "^4.0.0",
-    "redux-saga": "^0.16.0",
     "source-map-explorer": "^1.6.0"
   },
   "lint-staged": {

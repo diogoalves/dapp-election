@@ -1,37 +1,29 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { drizzleConnect } from 'drizzle-react';
-import { ContractData } from 'drizzle-react-components';
 
-class Vote extends Component {
+export default class Vote extends Component {
+  state = {
+    dataKey: null
+  };
+
+  componentDidMount() {
+    const { drizzle } = this.props;
+    const contract = drizzle.contracts.Election;
+
+    const dataKey = contract.methods['candidatesCount'].cacheCall();
+    this.setState({ dataKey });
+  }
+
   render() {
-    console.log(this);
-    if (this.props.election.initialized) {
-      // const abi = this.props.election.abi();
-      //console.log(this.props.contracts)
-    }
+    console.log(this.props);
+    console.log(this.state);
+    // const { Election } = this.props.drizzleState.contracts;
+    // console.log(this.props.drizzleState.contracts);
+    // const candidatesCount = Election.candidatesCount[this.state.dataKey];
     return (
       <div>
-        <div>{`Initialized: ${this.props.initialized}`}</div>
-        <div>{`Account: ${this.props.account}`}</div>
-        {/* <ContractData contract="Election" method="candidatesCount"  />
-        <ContractData contract="Election" method="candidates" methodArgs={[1]} />
-        <ContractData contract="Election" method="candidates" methodArgs={[2]} /> */}
-        {/* <Teste contract="Election" method="candidates" methodArgs={[2]} />  */}
+        <div>Account: {this.props.drizzleState.accounts[0]}</div>
+        <div>Count: {candidatesCount}</div>
       </div>
     );
   }
 }
-
-const mapStateToProps = state => {
-  return {
-    initialized: state.drizzleStatus.initialized,
-    account: state.accounts[0],
-    election: state.contracts.Election,
-    state,
-    contracts: state.contracts
-  };
-};
-
-//export default connect(mapStateToProps)(Vote);
-export default drizzleConnect(Vote, mapStateToProps);

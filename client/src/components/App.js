@@ -1,20 +1,17 @@
-import React, { Component } from 'react';
-import { Route, Switch } from 'react-router';
+import React from 'react';
+import { DrizzleContext } from 'drizzle-react';
 import Vote from './Vote';
 
-const Dashboard = () => <div>Dashboard</div>;
+export default () => (
+  <DrizzleContext.Consumer>
+    {drizzleContext => {
+      const { drizzle, drizzleState, initialized } = drizzleContext;
 
-class App extends Component {
-  render() {
-    return (
-      <div>
-        <Switch>
-          <Route exact path="/" component={Vote} />
-          <Route exact path="/dashboard" component={Dashboard} />
-        </Switch>
-      </div>
-    );
-  }
-}
+      if (!initialized) {
+        return 'Loading...';
+      }
 
-export default App;
+      return <Vote drizzle={drizzle} drizzleState={drizzleState} />;
+    }}
+  </DrizzleContext.Consumer>
+);
