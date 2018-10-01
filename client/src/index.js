@@ -12,7 +12,7 @@ const drizzle = new Drizzle(options, drizzleStore);
 
 ReactDOM.render(
   <DrizzleContext.Provider drizzle={drizzle}>
-    <App />
+    <div>asd</div>
   </DrizzleContext.Provider>,
   document.getElementById('root')
 );

@@ -22,7 +22,7 @@ export default class Vote extends Component {
     return (
       <div>
         <div>Account: {this.props.drizzleState.accounts[0]}</div>
-        <div>Count: {candidatesCount}</div>
+        {/* <div>Count: {candidatesCount}</div> */}
       </div>
     );
   }
