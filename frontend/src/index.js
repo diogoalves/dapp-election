@@ -10,6 +10,8 @@ const options = { contracts: [Election] };
 const drizzleStore = generateStore(options);
 const drizzle = new Drizzle(options, drizzleStore);
 
+window.drizzleStore = drizzleStore;
+
 ReactDOM.render(
 <DrizzleContext.Provider drizzle={drizzle}>
   <App drizzle={drizzle}/>

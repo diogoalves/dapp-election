@@ -1,4 +1,5 @@
 import React from "react";
+import Candidate from './Candidate';
 
 class List extends React.Component {
   state = {
@@ -22,8 +23,7 @@ class List extends React.Component {
     return (
       <div>
         {dataKeys && dataKeys.map(dataKey => {
-          const candidate = Election.candidates[dataKey];
-          return <p key={dataKey}>{candidate && candidate.value && candidate.value.name}: {candidate && candidate.value && candidate.value.voteCount}</p>
+          return <Candidate key={dataKey} id={dataKey} />;
         })}
 
       </div>
